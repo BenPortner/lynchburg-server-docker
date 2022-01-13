@@ -66,6 +66,9 @@ COPY files/entrypoint.sh /usr/local/bin/
 COPY files/start_websockets.sh /usr/local/bin/
 COPY files/routes.py $WEB2PY_ROOT
 
+RUN chmod +x /usr/local/bin/entrypoint.sh \
+ && chmod +x /usr/local/bin/start_websockets.sh
+
 # Clone project files
 WORKDIR $WEB2PY_ROOT/applications
 RUN git clone https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-server app
