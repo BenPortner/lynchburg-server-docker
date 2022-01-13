@@ -17,9 +17,7 @@ ARG ADMIN_PASSWORD=
 RUN [ ! -z "${ADMIN_PASSWORD}" ] || { echo "Please specify an web2py admin password using the 'docker build --build-arg \"ADMIN_PASSWORD=<PASSWORD>\"' build flag"; exit 1; }
 
 ENV WEB2PY_PASSWORD $ADMIN_PASSWORD
-ENV WEB2PY_VERSION=
 ENV WEB2PY_ROOT=/opt/web2py
-ENV WEB2PY_ADMIN_SECURITY_BYPASS=
 
 # This enables logging only for 5xx errors
 ENV UWSGI_OPTIONS="--master --thunder-lock --enable-threads --disable-logging --log-5xx"
