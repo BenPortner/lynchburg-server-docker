@@ -69,7 +69,7 @@ COPY files/start_scheduler.sh /usr/local/bin/
 COPY files/routes.py $WEB2PY_ROOT
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
- && chmod +x /usr/local/bin/start_websockets.sh
+ && chmod +x /usr/local/bin/start_websockets.sh \
  && chmod +x /usr/local/bin/start_scheduler.sh
 
 # Clone project files
