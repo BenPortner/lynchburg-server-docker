@@ -65,10 +65,12 @@ RUN mv $WEB2PY_ROOT/handlers/wsgihandler.py $WEB2PY_ROOT \
 # Copy meta files
 COPY files/entrypoint.sh /usr/local/bin/
 COPY files/start_websockets.sh /usr/local/bin/
+COPY files/start_scheduler.sh /usr/local/bin/
 COPY files/routes.py $WEB2PY_ROOT
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
  && chmod +x /usr/local/bin/start_websockets.sh
+ && chmod +x /usr/local/bin/start_scheduler.sh
 
 # Clone project files
 WORKDIR $WEB2PY_ROOT/applications

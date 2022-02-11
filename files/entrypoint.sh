@@ -2,6 +2,8 @@
 
 /usr/local/bin/start_websockets.sh &
 
+/usr/local/bin/start_scheduler.sh &
+
 # Add specified admin password
 python -c "from gluon.main import save_password; save_password('$WEB2PY_PASSWORD',443)"
 
