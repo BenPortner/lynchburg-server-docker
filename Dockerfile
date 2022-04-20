@@ -6,7 +6,7 @@
 # Exposed are ports 80 and 8888 which requires uwsgi_pass and a reverse
 # connection upgrade to websockts proxy_pass respectively
 #
-# This is a modified Dockerfile originally created by @smithmicro (https://github.com/smithmicro/web2py)
+# This Dockerfile is inspired by the one @smithmicro created (https://github.com/smithmicro/web2py)
 #
 
 # Initial setup
@@ -82,7 +82,7 @@ RUN sed -i -e "/rproxy\s*=/ s/= .*/= $REVERSE_PROXY/" ./appconfig.ini
 
 # Generate websocket key from admin pw
 WORKDIR $WEB2PY_ROOT
-RUN echo "$WEB2PY_PASSWORD" | sha256sum | cut -c1-32 > websocket_key.txt \
+RUN echo "$WEB2PY_PASSWORD$(date)" | sha256sum | cut -c1-32 > websocket_key.txt \
  && cat websocket_key.txt
 
 ENTRYPOINT [ "entrypoint.sh" ]
