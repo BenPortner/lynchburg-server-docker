@@ -14,6 +14,7 @@ FROM python:alpine
 
 ARG ADMIN_PASSWORD=
 ARG REVERSE_PROXY=true
+ARG DB_URI=sqlite://storage.sqlite
 
 RUN [ ! -z "${ADMIN_PASSWORD}" ] || { echo "Please specify an web2py admin password using the 'docker build --build-arg \"ADMIN_PASSWORD=<PASSWORD>\"' build flag"; exit 1; }
 
@@ -79,6 +80,7 @@ RUN git clone https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-server app
 # Set reverse proxy flag
 WORKDIR $WEB2PY_ROOT/applications/app/private
 RUN sed -i -e "/rproxy\s*=/ s/= .*/= $REVERSE_PROXY/" ./appconfig.ini
+RUN sed -i -e "/uri\s*=/ s/= .*/= $DB_URI/" ./appconfig.ini
 
 # Generate websocket key from admin pw
 WORKDIR $WEB2PY_ROOT
