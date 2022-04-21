@@ -80,7 +80,7 @@ RUN git clone https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-server app
 # Set reverse proxy flag
 WORKDIR $WEB2PY_ROOT/applications/app/private
 RUN sed -i -e "/rproxy\s*=/ s/= .*/= $REVERSE_PROXY/" ./appconfig.ini
-RUN sed -i -e "/uri\s*=/ s/= .*/= $DB_URI/" ./appconfig.ini
+RUN sed -i -e "/uri\s*=/ s~= .*~= $DB_URI~" ./appconfig.ini
 
 # Generate websocket key from admin pw
 WORKDIR $WEB2PY_ROOT
