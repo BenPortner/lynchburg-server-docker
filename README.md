@@ -16,6 +16,7 @@ NOTE: The temporary workaround file [websocket_messaging.py](/files/websocket_me
 #### Installation
 
 1. Build the docker image using ``docker build --build-arg "ADMIN_PASSWORD=<YOUR_ADMIN_PASSWORD>" -t lynchburg .``.  
+    * Additionally add another ``--build-arg "CONTACT=<CONTACT LINK>"``, if you wish to apply a link to your contact page to the contact button. By default the link is set to ``#``. Note: Adding a contact page is a legal requirement in some jurisdictions.
     * Additionally add another ``--build-arg "REVERSE_PROXY=false"``, if you wish to use the docker container directly without a reverse proxy (not recommended). Note that using HTTPS for Lynchburg will require a lot of effort when not using a reverse proxy.
     * Additionally add another ``--build-arg "DB_URI=<URI>"``, if you wish to use a real database instead of the default sqlite one. Valid ``<URI>`` strings can be found [here](http://web2py.com/book/default/chapter/06).
 1. Create a new docker container using ``docker create --name lynchburg lynchburg``
