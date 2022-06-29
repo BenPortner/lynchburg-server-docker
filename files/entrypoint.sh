@@ -2,11 +2,14 @@
 
 /usr/local/bin/start_websockets.sh &
 
-/usr/local/bin/start_scheduler.sh &
-
 # Add specified admin password
 python -c "from gluon.main import save_password; save_password('$WEB2PY_PASSWORD',443)"
 
-exec uwsgi --socket 0.0.0.0:80 --protocol uwsgi --wsgi wsgihandler:application $UWSGI_OPTIONS
+if [ "$WEB2PY_RP" == "true" ]
+then
+  uwsgi --socket 0.0.0.0:80 --protocol uwsgi --wsgi wsgihandler:application $UWSGI_OPTIONS &
+else
+  uwsgi --http 0.0.0.0:80 --protocol uwsgi --wsgi wsgihandler:application $UWSGI_OPTIONS &
+fi
 
-exec "$@"
+exec /usr/local/bin/start_scheduler.sh

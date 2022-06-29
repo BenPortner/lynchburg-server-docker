@@ -19,6 +19,7 @@ ARG CONTACT=#
 
 RUN [ ! -z "${ADMIN_PASSWORD}" ] || { echo "Please specify an web2py admin password using the 'docker build --build-arg \"ADMIN_PASSWORD=<PASSWORD>\"' build flag"; exit 1; }
 
+ENV WEB2PY_RP $REVERSE_PROXY
 ENV WEB2PY_PASSWORD $ADMIN_PASSWORD
 ENV WEB2PY_ROOT=/opt/web2py
 
@@ -90,6 +91,5 @@ RUN echo "$WEB2PY_PASSWORD$(date)" | sha256sum | cut -c1-32 > websocket_key.txt 
  && cat websocket_key.txt
 
 ENTRYPOINT [ "entrypoint.sh" ]
-CMD [ "uwsgi" ]
 
 EXPOSE 80 8888
