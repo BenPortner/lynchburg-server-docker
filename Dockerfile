@@ -55,7 +55,7 @@ RUN wget http://web2py.com/examples/static/web2py_src.zip \
 # If at some point this file is fixed for python3.8 in the Git Repo, this can be removed
 # (https://github.com/web2py/web2py/blob/master/gluon/contrib/websocket_messaging.py)
 #
-COPY files/websocket_messaging.py $WEB2PY_ROOT
+COPY ./files/websocket_messaging.py $WEB2PY_ROOT
 RUN cp $WEB2PY_ROOT/websocket_messaging.py $WEB2PY_ROOT/gluon/contrib/websocket_messaging.py
 #
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -66,10 +66,10 @@ RUN mv $WEB2PY_ROOT/handlers/wsgihandler.py $WEB2PY_ROOT \
  && ln -s $WEB2PY_ROOT/websocket_messaging.py $WEB2PY_ROOT/gluon/contrib/
 
 # Copy meta files
-COPY files/entrypoint.sh /usr/local/bin/
-COPY files/start_websockets.sh /usr/local/bin/
-COPY files/start_scheduler.sh /usr/local/bin/
-COPY files/routes.py $WEB2PY_ROOT
+COPY ./files/entrypoint.sh /usr/local/bin/
+COPY ./files/start_websockets.sh /usr/local/bin/
+COPY ./files/start_scheduler.sh /usr/local/bin/
+COPY ./files/routes.py $WEB2PY_ROOT
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
  && chmod +x /usr/local/bin/start_websockets.sh \
