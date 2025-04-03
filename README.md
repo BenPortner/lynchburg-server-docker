@@ -1,4 +1,7 @@
 ## Lynchburg Server Dockerfile
+
+NOTE: This is a fork of the [original repository](https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-docker), which seems no longer maintained.
+
 [Project Lynchburg](https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-page)  
 https://git.noc.ruhr-uni-bochum.de/lynchburg/lynchburg-docker
 
