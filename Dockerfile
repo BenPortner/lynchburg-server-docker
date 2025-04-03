@@ -10,7 +10,7 @@
 #
 
 # Initial setup
-FROM python:alpine
+FROM python:3.12-alpine
 
 ARG ADMIN_PASSWORD=
 ARG REVERSE_PROXY=true
@@ -56,8 +56,8 @@ RUN wget http://web2py.com/examples/static/web2py_src.zip \
 # If at some point this file is fixed for python3.8 in the Git Repo, this can be removed
 # (https://github.com/web2py/web2py/blob/master/gluon/contrib/websocket_messaging.py)
 #
-COPY ./files/websocket_messaging.py $WEB2PY_ROOT
-RUN cp $WEB2PY_ROOT/websocket_messaging.py $WEB2PY_ROOT/gluon/contrib/websocket_messaging.py
+# COPY ./files/websocket_messaging.py $WEB2PY_ROOT
+# RUN cp $WEB2PY_ROOT/websocket_messaging.py $WEB2PY_ROOT/gluon/contrib/websocket_messaging.py
 #
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
